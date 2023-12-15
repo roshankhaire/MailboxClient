@@ -1,24 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
-
+import AuthForm from './components/AuthForm';
+import Welcome from './components/pages/Welcome';
+import {Routes,Route } from "react-router-dom";
+import Nbar from './components/pages/Nbar';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+ <>
+        <Nbar/>
+  <Routes>
+      <Route  exact path="/welcome" element={<Welcome/>}/>
+      <Route  exact path="/auth" element={<AuthForm/>}/>
+    
+    </Routes>
+
+ </>
   );
 }
 
