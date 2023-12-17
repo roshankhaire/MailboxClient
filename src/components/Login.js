@@ -2,9 +2,9 @@ import React from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 const Login=()=>{
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const [isLoading,setIsLoading]=useState(false)
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
@@ -35,7 +35,7 @@ const Login=()=>{
           if(res.ok){
             return res.json().then((data)=>{
                 console.log(data)
-                navigate("/welcome")
+               // navigate("/welcome")
             })
           }
           else{
@@ -52,7 +52,7 @@ const Login=()=>{
     }
     return(
         <>
-        <h1>This is signUp</h1>
+        <h1>This is Login</h1>
         <Form onSubmit={submitHandler}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
