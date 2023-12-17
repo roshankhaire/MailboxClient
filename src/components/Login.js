@@ -2,7 +2,7 @@ import React from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from "react";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Login=()=>{
     //const navigate = useNavigate();
     const [isLoading,setIsLoading]=useState(false)
@@ -35,7 +35,7 @@ const Login=()=>{
           if(res.ok){
             return res.json().then((data)=>{
                 console.log(data)
-               // navigate("/welcome")
+               //navigate("/email")
             })
           }
           else{
