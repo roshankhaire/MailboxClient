@@ -2,6 +2,7 @@ import React from "react";
 import { useState,useEffect } from "react";
 import axios from "axios";
 import Table from 'react-bootstrap/Table';
+import NavLink from "react-router-dom";
 const GetInboxView=()=>{
      const [emaildata,setEmailData]=useState([])
 
@@ -20,7 +21,13 @@ const GetInboxView=()=>{
        
     },[])
              
-             
+    const deleteHandler=(id)=>{
+        console.log("this is delete Handler",id)
+        axios.delete(`https://crudcrud.com/api/695bce3ddbe54d00bdbef509c42a06f9/email/${id}`)
+        .then(()=>{
+           getData()
+        })
+     }     
          
     
     return(
@@ -40,10 +47,13 @@ const GetInboxView=()=>{
     { emaildata.map((item)=>{
         return(
             <tr key={item.to}>
-    
+      
           <th>{item.to}</th>
-          <th>{item.testMail
-}</th>
+          <th>{item.textMail}</th>
+          <th>
+          <button className="btn btn-sm btn-danger ms-2" onClick={()=>{deleteHandler(item._id)}}>Delete</button>
+          </th>
+
          
         </tr>
         )
