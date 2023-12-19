@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const Login=()=>{
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
     const [isLoading,setIsLoading]=useState(false)
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
@@ -35,7 +35,7 @@ const Login=()=>{
           if(res.ok){
             return res.json().then((data)=>{
                 console.log(data)
-               //navigate("/email")
+               navigate("/email")
             })
           }
           else{

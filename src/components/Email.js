@@ -2,33 +2,36 @@ import React from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from "react";
-import axios from "axios"
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Email=()=>{
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
    const [isLoading,setIsLoading]=useState(false)
     const [to,setTo]=useState("")
-    const [testMail,setTestMail]=useState("")
+    const [textMail,setTextMail]=useState("")
    
     const submitHandler=(event)=>{
         event.preventDefault()
         const emailObject={
             to:to,
-            testMail:testMail,
+            textMail:textMail,
            
         }
         console.log(emailObject)
         setIsLoading(true)
-          axios.post("https://crudcrud.com/Dashboard/4c63a7da6a9c4e79b0406f2a61016e24",emailObject)
+       
+          axios.post("https://crudcrud.com/api/695bce3ddbe54d00bdbef509c42a06f9/email",emailObject)
           .then((res)=>{
-            setIsLoading(false)
             console.log(res)
           })
+            navigate("/inboxviewpage")
+         
        
     }
     return(
         <>
         <h1>This is Email</h1>
-        <Form onSubmit={submitHandler}>
+        <Form >
       <Form.Group className="mb-3" controlId="formBasicto">
         <Form.Label>to</Form.Label>
         <Form.Control type="to"  placeholder="to "value={to} onChange={(e)=>{
@@ -39,14 +42,14 @@ const Email=()=>{
 
       <Form.Group className="mb-3" controlId="formBasictestMail">
         <Form.Label> </Form.Label>
-        <Form.Control type="testMail" placeholder="test mail" value={testMail}
+        <Form.Control type="testMail" placeholder="text mail" value={textMail}
         onChange={(e)=>{
-            setTestMail(e.target.value)
+            setTextMail(e.target.value)
         }}/> 
       </Form.Group>
       
      
-{ !isLoading && <Button variant="primary" type="submit">
+{ !isLoading && <Button variant="primary" type="submit" onClick={submitHandler}>
         Send Email
       </Button>}
       {isLoading && <p>sending email...</p>}
