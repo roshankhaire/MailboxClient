@@ -25,6 +25,7 @@ const GetInboxView=()=>{
     
     return(
         <>
+          <h1>This is  get inbox view page</h1>
          <Table striped bordered hover>
       <thead>
         <tr>
@@ -51,7 +52,7 @@ const GetInboxView=()=>{
      
       </tbody>
     </Table>
-             <h1>This is  get inbox view page</h1>
+           
 
         </>
     )
