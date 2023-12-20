@@ -2,7 +2,7 @@ import React from "react";
 import { useState,useEffect } from "react";
 import axios from "axios";
 import Table from 'react-bootstrap/Table';
-import NavLink from "react-router-dom";
+import {NavLink} from "react-router-dom";
 const GetInboxView=()=>{
      const [emaildata,setEmailData]=useState([])
 
@@ -62,8 +62,10 @@ const GetInboxView=()=>{
      
       </tbody>
     </Table>
-           
-
+          <NavLink to="/email" >   <button>
+            send
+          </button></NavLink>
+       
         </>
     )
 }
